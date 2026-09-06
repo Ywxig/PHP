@@ -7,6 +7,8 @@
 
 ## Задание 1. Анализ HTTP-запросов. Часть 1
 
+![Анализ HTTP-запроса Wikipedia](../resorces/wiki_http_request.png)
+
 ### 1.1. Анализ запроса к `https://en.wikipedia.org/wiki/HTTP`
 * **URL запроса:** `https://en.wikipedia.org/wiki/HTTP`
 * **Метод запроса:** `GET`
