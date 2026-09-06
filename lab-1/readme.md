@@ -94,6 +94,8 @@ X-Firefox-Spdy: h2
 
 ## Задание 2. Анализ HTTP-запросов. Часть 2 (Поиск)
 
+![Скриншот сети](../resorces/wiki_firefox_request.png)
+
 ### Анализ поиска на `https://en.wikipedia.org/wiki/Special:Search` по слову `browser`
 * **URL запроса:** `https://en.wikipedia.org/w/index.php?search=browser&title=Special%3ASearch&go=Go`
 * **Метод запроса:** `GET`
@@ -106,6 +108,8 @@ X-Firefox-Spdy: h2
 ---
 
 ## Задание 3. Анализ HTTP-запросов. Часть 3 (GitHub)
+
+[github request](../resorces/github_request.png)
 
 ### Анализ запроса к `https://github.com`
 * **URL запроса:** `https://github.com/`
