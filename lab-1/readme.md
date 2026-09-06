@@ -16,7 +16,28 @@
 * **Статус ответа:** `200 OK`
   * *Значение:* Запрос прошёл успешно, сервер нашёл и вернул запрашиваемый документ.
 * **Заголовки (Headers):**
-```http
+  * **Заголовки запроса (Request Headers):**
+  * ```http
+GET /api/rest_v1/page/summary/Request%E2%80%93response HTTP/2
+Host: en.wikipedia.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:154.0) Gecko/20100101 Firefox/154.0
+Accept: application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/Summary/1.2.0"
+Accept-Language: en
+Accept-Encoding: gzip, deflate, br, zstd
+Referer: https://en.wikipedia.org/wiki/HTTP
+Connection: keep-alive
+Cookie: WMF-Uniq=Lk-8ACWHozmzb5pfENUJHAMBAB8MAFvd4Dn6RPl-dEAtnXFZBeAOYtSZYDsHZ5Do; WMF-Last-Access=06-Sep-2026; WMF-Last-Access-Global=06-Sep-2026; WMF-DP=62c; GeoIP=MD:CU:Chisinau:47.00:28.86:v4; NetworkProbeLimit=0.001; enwikimwuser-sessionId=2fba87eb3b119bb5e80a
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=4
+```
+    * `Host: en.wikipedia.org` — имя хоста сервера.
+    * `User-Agent` — сведения о клиенте (браузере, ОС).
+    * `Accept` — форматы контента, принимаемые клиентом (`text/html`, ...).
+    * `Accept-Encoding: gzip, deflate, br` — поддерживаемые алгоритмы сжатия.
+  * **Заголовки ответа (Response Headers):**
+  * ```http
 HTTP/2 200 
 content-security-policy: default-src 'none'; frame-ancestors 'none'
 x-content-security-policy: default-src 'none'; frame-ancestors 'none'
@@ -50,12 +71,6 @@ x-request-id: 3185ca0d-c5e4-46b1-8b9d-d7ce3af6aa67
 server-timing: cache;desc="hit-local", host;desc="cp3071",co_id;desc="3384184183"
 X-Firefox-Spdy: h2
 ```
-  * **Заголовки запроса (Request Headers):**
-    * `Host: en.wikipedia.org` — имя хоста сервера.
-    * `User-Agent` — сведения о клиенте (браузере, ОС).
-    * `Accept` — форматы контента, принимаемые клиентом (`text/html`, ...).
-    * `Accept-Encoding: gzip, deflate, br` — поддерживаемые алгоритмы сжатия.
-  * **Заголовки ответа (Response Headers):**
     * `content-type: text/html; charset=UTF-8` — тип и кодировка возвращаемого содержимого.
     * `content-encoding: gzip` — метод сжатия ответа.
     * `cache-control` — правила кеширования страницы.
