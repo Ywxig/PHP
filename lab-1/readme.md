@@ -17,7 +17,7 @@
   * *Значение:* Запрос прошёл успешно, сервер нашёл и вернул запрашиваемый документ.
 * **Заголовки (Headers):**
   * **Заголовки запроса (Request Headers):**
-  * ```http
+```http
 GET /api/rest_v1/page/summary/Request%E2%80%93response HTTP/2
 Host: en.wikipedia.org
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:154.0) Gecko/20100101 Firefox/154.0
@@ -32,12 +32,13 @@ Sec-Fetch-Mode: cors
 Sec-Fetch-Site: same-origin
 Priority: u=4
 ```
+
     * `Host: en.wikipedia.org` — имя хоста сервера.
     * `User-Agent` — сведения о клиенте (браузере, ОС).
     * `Accept` — форматы контента, принимаемые клиентом (`text/html`, ...).
     * `Accept-Encoding: gzip, deflate, br` — поддерживаемые алгоритмы сжатия.
   * **Заголовки ответа (Response Headers):**
-  * ```http
+```http
 HTTP/2 200 
 content-security-policy: default-src 'none'; frame-ancestors 'none'
 x-content-security-policy: default-src 'none'; frame-ancestors 'none'
