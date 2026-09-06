@@ -16,6 +16,40 @@
 * **Статус ответа:** `200 OK`
   * *Значение:* Запрос прошёл успешно, сервер нашёл и вернул запрашиваемый документ.
 * **Заголовки (Headers):**
+```http
+HTTP/2 200 
+content-security-policy: default-src 'none'; frame-ancestors 'none'
+x-content-security-policy: default-src 'none'; frame-ancestors 'none'
+x-webkit-csp: default-src 'none'; frame-ancestors 'none'
+cache-control: s-maxage=1209600, max-age=300
+content-language: en
+content-type: application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/Summary/1.5.0"
+date: Sun, 06 Sep 2026 07:25:32 GMT
+server: production-tls
+access-control-allow-origin: *
+access-control-allow-methods: GET,HEAD
+access-control-allow-headers: accept, content-type, content-length, cache-control, accept-language, api-user-agent, if-match, if-modified-since, if-none-match, dnt, accept-encoding
+access-control-expose-headers: etag
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+referrer-policy: origin-when-cross-origin
+x-xss-protection: 1; mode=block
+etag: W/"1291180294/db994bf0-a713-11f1-915b-6c02aea72093"
+content-encoding: gzip
+age: 0
+accept-ranges: bytes
+vary: Accept-Language, x-restbase-compat, Accept-Encoding
+x-cache: cp3071 hit, cp3071 miss
+x-cache-status: hit-local
+strict-transport-security: max-age=106384710; includeSubDomains; preload
+report-to: { "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0" }] }
+nel: { "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction": 0.0}
+x-client-ip: 95.65.47.244
+content-length: 918
+x-request-id: 3185ca0d-c5e4-46b1-8b9d-d7ce3af6aa67
+server-timing: cache;desc="hit-local", host;desc="cp3071",co_id;desc="3384184183"
+X-Firefox-Spdy: h2
+```
   * **Заголовки запроса (Request Headers):**
     * `Host: en.wikipedia.org` — имя хоста сервера.
     * `User-Agent` — сведения о клиенте (браузере, ОС).
