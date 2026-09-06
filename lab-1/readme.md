@@ -109,7 +109,7 @@ X-Firefox-Spdy: h2
 
 ## Задание 3. Анализ HTTP-запросов. Часть 3 (GitHub)
 
-[github request](../resorces/github_request.png)
+![github request](../resorces/github_request.png)
 
 ### Анализ запроса к `https://github.com`
 * **URL запроса:** `https://github.com/`
