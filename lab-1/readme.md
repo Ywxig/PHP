@@ -17,6 +17,7 @@
   * *Значение:* Запрос прошёл успешно, сервер нашёл и вернул запрашиваемый документ.
 * **Заголовки (Headers):**
   * **Заголовки запроса (Request Headers):**
+
 ```http
 GET /api/rest_v1/page/summary/Request%E2%80%93response HTTP/2
 Host: en.wikipedia.org
@@ -38,6 +39,7 @@ Priority: u=4
     * `Accept` — форматы контента, принимаемые клиентом (`text/html`, ...).
     * `Accept-Encoding: gzip, deflate, br` — поддерживаемые алгоритмы сжатия.
   * **Заголовки ответа (Response Headers):**
+
 ```http
 HTTP/2 200 
 content-security-policy: default-src 'none'; frame-ancestors 'none'
@@ -72,6 +74,7 @@ x-request-id: 3185ca0d-c5e4-46b1-8b9d-d7ce3af6aa67
 server-timing: cache;desc="hit-local", host;desc="cp3071",co_id;desc="3384184183"
 X-Firefox-Spdy: h2
 ```
+
     * `content-type: text/html; charset=UTF-8` — тип и кодировка возвращаемого содержимого.
     * `content-encoding: gzip` — метод сжатия ответа.
     * `cache-control` — правила кеширования страницы.
