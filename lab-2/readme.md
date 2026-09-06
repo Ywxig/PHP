@@ -22,6 +22,18 @@ sudo pacman -S php
 ```bash
 php -v
 ```
+***
+
+## запуск php приложени
+
+```bash
+php ./01_Introduction.php
+```
+вывод
+```bash
+Hello phpВсе возвращаются на работу! 288<br />
+Все возвращаются на работу! 288<br />
+```
 
 ---
 
