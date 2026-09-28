@@ -14,13 +14,6 @@ $transactions = [
         "merchant" => "SuperMart",
     ],
     [
-        "id" => 2,
-        "date" => "2024-02-20",
-        "amount" => 75.50,
-        "description" => "Dinner with friends",
-        "merchant" => "Local Restaurant",
-    ],
-    [
         "id" => 3,
         "date" => "2024-03-05",
         "amount" => 250.00,
@@ -28,8 +21,22 @@ $transactions = [
         "merchant" => "TechWorld",
     ],
     [
+        "id" => 2,
+        "date" => "2024-02-20",
+        "amount" => 75.50,
+        "description" => "Dinner with friends",
+        "merchant" => "Local Restaurant",
+    ],
+    [
         "id" => 4,
         "date" => "2024-04-10",
+        "amount" => 45.20,
+        "description" => "Monthly subscription for music",
+        "merchant" => "SoundStream",
+    ],
+    [
+        "id" => 5,
+        "date" => "2024-04-9",
         "amount" => 45.20,
         "description" => "Monthly subscription for music",
         "merchant" => "SoundStream",
@@ -267,6 +274,37 @@ sortByDate($transactions);
              }
              ?>
          </div>
+
+         <h1>Управление банковскими транзакциями</h1>
+
+         <!-- TODO отсортеровать по дате -->
+
+         <table border='1'>
+         <thead>
+             <tr>
+                 <!-- Заголовки столбцов -->
+                 <th>Дата</th>
+                 <th>Сумма</th>
+                 <th>Описание</th>
+             </tr>
+         </thead>
+
+         <tbody>
+         <!-- Вывод транзакций -->
+         <?php
+         $sortedTransactions = $transactions;
+         sortByDate($sortedTransactions);
+         foreach ($sortedTransactions as $transaction):
+         ?>
+         <tr>
+             <td><?= $transaction['date'] ?></td>
+             <td><?= $transaction['amount'] ?></td>
+             <td><?= $transaction['description'] ?></td>
+         </tr>
+         <?php endforeach; ?>
+         </tbody>
+
+         </table>
 
 </body>
 </html>
