@@ -392,5 +392,131 @@ $renderer = new TransactionTableRenderer();
 
 <h2>По сумме (по убыванию)</h2>
 <?= $renderer->render($manager->sortTransactionsByAmountDesc()); ?>
+
+<h2>Добавление новой транзакции</h2>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $id = (int) $_POST['id'];
+        $date = $_POST['date'];
+        $amount = (float) $_POST['amount'];
+        $description = trim($_POST['description']);
+        $merchant = trim($_POST['merchant']);
+        $category = trim($_POST['category']);
+
+        $newTransaction = new Transaction(
+            $id,
+            new DateTimeImmutable($date),
+            $amount,
+            $description,
+            $merchant,
+            $category
+        );
+
+        $repository->addTransaction($newTransaction);
+        echo '<p style="color: green;">Транзакция успешно добавлена!</p>';
+    } catch (Exception $e) {
+        echo '<p style="color: red;">Ошибка при добавлении транзакции: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . '</p>';
+    }
+}
+?>
+<form method="POST">
+    <div>
+        <label for="id">ID:</label><br>
+        <input type="number" id="id" name="id" required>
+    </div>
+    <div>
+        <label for="date">Дата:</label><br>
+        <input type="date" id="date" name="date" required>
+    </div>
+    <div>
+        <label for="amount">Сумма:</label><br>
+        <input type="number" step="0.01" id="amount" name="amount" required>
+    </div>
+    <div>
+        <label for="description">Описание:</label><br>
+        <input type="text" id="description" name="description" required>
+    </div>
+    <div>
+        <label for="merchant">Получатель:</label><br>
+        <input type="text" id="merchant" name="merchant" required>
+    </div>
+    <div>
+        <label for="category">Категория получателя:</label><br>
+        <input type="text" id="category" name="category" required>
+    </div>
+    <br>
+    <button type="submit">Добавить транзакцию</button>
+</form>
+
+
+<h2>Удаление транзакции</h2>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
+    try {
+        $deleteId = (int) $_POST['delete_id'];
+        $transaction = $repository->findById($deleteId);
+
+        if ($transaction === null) {
+            throw new Exception("Транзакция с ID {$deleteId} не найдена.");
+        }
+
+        $repository->removeTransactionById($deleteId);
+        echo '<p style="color: green;">Транзакция успешно удалена!</p>';
+    } catch (Exception $e) {
+        echo '<p style="color: red;">Ошибка при удалении транзакции: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . '</p>';
+    }
+}
+?>
+<form method="POST">
+    <div>
+        <label for="delete_id">ID транзакции для удаления:</label><br>
+        <input type="number" id="delete_id" name="delete_id" required>
+    </div>
+    <br>
+    <button type="submit">Удалить транзакцию</button>
+</form>
+
+<h2>Итоговый список транзакций</h2>
+<?= $renderer->render($repository->getAllTransactions()); ?>
+
+<h2>Поиск транзакций</h2>
+<?php
+$searchResults = null;
+$searchMerchant = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search_merchant'])) {
+    $searchMerchant = trim($_GET['search_merchant']);
+    if ($searchMerchant !== '') {
+        $needle = mb_strtolower($searchMerchant);
+        $searchResults = array_filter(
+            $repository->getAllTransactions(),
+            static fn (Transaction $t): bool => mb_strpos(mb_strtolower($t->getMerchant()), $needle) !== false
+        );
+    }
+}
+?>
+<form method="GET">
+    <div>
+        <label for="search_merchant">Поиск по получателю:</label><br>
+        <input type="text" id="search_merchant" name="search_merchant" value="<?= htmlspecialchars($searchMerchant, ENT_QUOTES, 'UTF-8') ?>" required>
+    </div>
+    <br>
+    <button type="submit">Найти</button>
+</form>
+
+<?php if ($searchResults !== null): ?>
+    <h3>Результаты поиска</h3>
+    <?php if (empty($searchResults)): ?>
+        <p>По вашему запросу ничего не найдено.</p>
+    <?php else: ?>
+        <?= $renderer->render($searchResults); ?>
+    <?php endif; ?>
+<?php endif; ?>
+
+
+<h2>Общая сумма всех транзакций</h2>
+<p>Итого: <strong><?= number_format($manager->calculateTotalAmount(), 2, '.', ' ') ?></strong></p>
+
 </body>
 </html>
